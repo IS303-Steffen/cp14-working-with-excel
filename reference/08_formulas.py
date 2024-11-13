@@ -1,8 +1,10 @@
-# optional stuff that will clear the window each time you run it.
 import os
 import platform
 
 def clear_screen():
+    """
+    Clears the terminal screen to make it easier to follow along with code.
+    """
     if platform.system() == 'Windows':
         os.system('cls')
     else:
@@ -10,20 +12,28 @@ def clear_screen():
 
 clear_screen()
 
-###########################
-# START READING HERE
-###########################
+# ========
+# FORMULAS
+# ========
 
-from openpyxl import Workbook
+'''
+OVERVIEW
+--------
+To add formulas in openpyxl, just manually type them out.
+'''
+
+import openpyxl
 import random
 
 '''
-The code here is just generating random numbers to fill up columns A to F with 10 numbers
+STARTER CODE
+------------
+The code here is just generating random numbers to fill up columns A to F
+with 10 numbers
 '''
 
-
 #Create a new Workbook
-myWorkbook = Workbook()
+myWorkbook = openpyxl.Workbook()
 
 #Return the active worksheet and store it to currWS
 currWS = myWorkbook.active
@@ -34,8 +44,8 @@ currWS.title = "Customers"
 cols = ["A", "B", "C", "D", "E", "F"]
 
 #Create random data for 6 columns and 10 rows
-for iRow in range(1, 11) :
-    for iCol in range (6) :     
+for iRow in range(1, 11):
+    for iCol in range(6):     
         #Use the cols array and the iCol counter to return the column (i.e. "A")
         #Then concatenate it to the counter to create a column row value (i.e. "A1")          
         currWS[cols[iCol] + str(iRow)] = random.randint(0,100)

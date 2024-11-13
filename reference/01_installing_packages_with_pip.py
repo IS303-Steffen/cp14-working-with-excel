@@ -1,8 +1,10 @@
-# optional stuff that will clear the window each time you run it.
 import os
 import platform
 
 def clear_screen():
+    """
+    Clears the terminal screen to make it easier to follow along with code.
+    """
     if platform.system() == 'Windows':
         os.system('cls')
     else:
@@ -10,9 +12,9 @@ def clear_screen():
 
 clear_screen()
 
-###########################
-# START READING HERE
-###########################
+# ============================
+# INSTALLING PACKAGES WITH PIP
+# ============================
 
 import openpyxl
 
@@ -48,14 +50,15 @@ IT STILL ISN'T WORKING FOR ME:
        see all the version of Python that you have installed.
 
     2.1 For MacOS users:
-        - in the terminal, type "which pip" or "which pip3" and press return.
+        In the terminal, type "which pip" or "which pip3" and press return.
         That will show you which version of python pip is installing packages
         to.
     
     2.2 For Windows users:
-        - open up the command line NOT in VSCode by typing in "cmd" in your
-        search bar and pressing enter. Then type "where pip" or "where pip3"
-        to see which version of python pip is installing packages to.
+        Open up the command line NOT in VSCode by typing in "cmd" in the
+        Windows search bar and pressing enter. Then type "where pip" or
+        "where pip3" to see which version of python pip is installing packages
+        to.
 
     3. Try clicking the numbers near the bottom right of your screen in VS Code
        and then select the version of python that says "Recommended" 

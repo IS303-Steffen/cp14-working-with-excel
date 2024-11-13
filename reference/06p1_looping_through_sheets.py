@@ -1,8 +1,10 @@
-# optional stuff that will clear the window each time you run it.
 import os
 import platform
 
 def clear_screen():
+    """
+    Clears the terminal screen to make it easier to follow along with code.
+    """
     if platform.system() == 'Windows':
         os.system('cls')
     else:
@@ -10,22 +12,22 @@ def clear_screen():
 
 clear_screen()
 
-###########################
-# START READING HERE
-###########################
+# ===============================
+# LOOPING THROUGH SHEETS PRACTICE
+# ===============================
 
+# 1. PRACTICE LOOPING
 '''
-Practice:
-
 Import the mock_grades file.
 
 PART 1:
     Change the grade of anyone with a "C-" to be an "F" on the active sheet.
-    Save the results as a new workbook called "mock_grades_altered"
+    Save the results as a new workbook called "mock_grades_altered.xlsx"
 
 PART 2:
-    If you can successfully do that, then alter your code to change "C-" to "F" on all of the sheets
-    in mock_grades. Save the results as a new workbook called "mock_grades_altered"
+    If you can successfully do that, then alter your code to change "C-" to "F"
+    on ALL of the sheets in mock_grades. Save the results to
+    "mock_grades_altered.xlsx"
 
 '''
 
@@ -43,15 +45,14 @@ for row in current_sheet.iter_rows():
         if cell.value == "C-":
             cell.value = "F"
 
-external_workbook.save(filename="mock_grades_altered.xlsx")      
+external_workbook.save("mock_grades_altered.xlsx")      
 
 
 # PART 2:
-
 for worksheet in external_workbook.worksheets:
     for row in worksheet.iter_rows():
         if row[1].value == "C-":
             row[1].value = "F"
 
-external_workbook.save(filename="mock_grades_altered.xlsx")      
+external_workbook.save("mock_grades_altered.xlsx")      
 external_workbook.close()
