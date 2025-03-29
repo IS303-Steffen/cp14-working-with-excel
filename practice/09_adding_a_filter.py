@@ -1,46 +1,24 @@
-# optional stuff that will clear the window each time you run it.
-import os
-import platform
+from helper_functions import clear_screen
+clear_screen() # This just clears the terminal window each time we run code
 
-def clear_screen():
-    if platform.system() == 'Windows':
-        os.system('cls')
-    else:
-        os.system('clear')
+# ===============
+# ADDING A FILTER
+# ===============
 
-clear_screen()
-
-###########################
-# START READING HERE
-###########################
+'''
+OVERVIEW
+--------
+Filters on Excel sheets make it easier to rearrange data. You can add a filter
+to a range with one line of code. Just note that you won't see filters on 
+Workbooks inside VS Code, you'll need to open the workbook in Excel to see the
+effects.
+'''
 
 import openpyxl
 
-externalWorkbook = openpyxl.load_workbook("Mock_Grades.xlsx")
+external_workbook = openpyxl.load_workbook("mock_grades.xlsx")
 
-# on the worksheet, just add .auto_filter.ref = "coordinate range"
-# in Mock_Grades, the data goes from A1:B51
-externalWorkbook.active.auto_filter.ref = 'A1:B51'
-
-# what if you don't know how many rows? (This is useful for your project)
-# use max_row:
-furthestRowWithData = externalWorkbook.active.max_row
-print(f"furthest row with data: {furthestRowWithData}")
-externalWorkbook.active.auto_filter.ref = f'A1:B{furthestRowWithData}'
-
-
-# What if you don't know how many columns? (Note, on your project, you know exactly how many columns, so you don't need this, but you could use it)
-# You can use max_column:
-
-furthestColumnWithData = externalWorkbook.active.max_column
-print(f"furthest column with data: {furthestRowWithData}")
-
-# notice how it is a number? We need a Letter instead of a number, so you could use this:
-from openpyxl.utils import get_column_letter
-column_letter = get_column_letter(furthestColumnWithData)
-
-#now you can combine them to get this:
-externalWorkbook.active.auto_filter.ref = f'A1:{column_letter}{furthestRowWithData}'
-
-externalWorkbook.save(filename="Mock_Grades_Filter.xlsx")
-externalWorkbook.close()
+# 1. ADD A FILTER TO A RANGE
+# Using the workbook imported above, add a filter to the active sheet on range
+# A1:B11. Use auto_filter.ref = 'A1:B11'
+# Then save the workbook as example_09.xlsx
